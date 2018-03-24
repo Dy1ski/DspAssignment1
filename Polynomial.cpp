@@ -71,7 +71,8 @@ double Polynomial::operator()(double ax) const
 	Polynomial Calculate;
 	
 	
-
+// for loop here with fdegree which will return a double
+// need to use power of function
 	return 0.0; // place value for now
 }
 
