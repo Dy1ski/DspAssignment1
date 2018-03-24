@@ -2,6 +2,7 @@
 // COS30008, Tutorial 3, 2018
 
 #include "Polynomial.h"
+#include <cmath>
 
 using namespace std;
 
@@ -66,24 +67,26 @@ ostream& operator<<(ostream& aOStream, const Polynomial& aObject)
 	return aOStream;
 }
 
-double Polynomial::operator()(double ax) const
+double Polynomial::operator()(double aX) const
 {
-	Polynomial Calculate;
+	double cResult = 0.0;
+	Polynomial rPoly;
+	for (int i = 0; i <= fDegree; i++)
+	{
+		cResult += fCoeffs[i] * pow(aX, i);
 	
-	
-// for loop here with fdegree which will return a double
-// need to use power of function
-	return 0.0; // place value for now
+	}
+	return cResult; // place value for now
 }
 
 Polynomial Polynomial::computeIndefiniteIntegral()const
 {
 	Polynomial Integal;
 	Integal.fDegree = fDegree + 1;
-	for (int i = 0; Integal.fDegree < i; i++)
+	for (int i = 0; i <= Integal.fDegree; i++)
 	{
 		Integal.fCoeffs[i + 1] = fCoeffs[i] / (i + 1); // populating the array and assigning the value
-		
+
 	}
 
 	return Integal;
@@ -92,11 +95,6 @@ Polynomial Polynomial::computeIndefiniteIntegral()const
 double Polynomial::calculateDefiniteIntegral(double aXlow, double aXhigh) const
 {
 	Polynomial Definite;
-
-	return
-		
-		//Definite.computeIndefiniteIntegral(aXhigh) - Definite.computeIndefiniteIntegral(aXlow);
-		//((Definite.computeIndefiniteIntegral() - aXhigh) - (Definite.computeIndefiniteIntegral() - aXlow));
-		
-		
+	
+	return ((((*this).computeIndefiniteIntegral().operator()(aXhigh)) - ((*this).computeIndefiniteIntegral().operator()(aXlow))));
 }
