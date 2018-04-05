@@ -94,9 +94,6 @@ Polynomial Polynomial::computeIndefiniteIntegral()const
 
 double Polynomial::calculateDefiniteIntegral(double aXlow, double aXhigh) const
 {
-	Polynomial Definite;
-	
 	Polynomial Definite = computeIndefiniteIntegral();
-	
 	return Definite(aXhigh) - Definite(aXlow);
 }
