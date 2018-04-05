@@ -96,5 +96,7 @@ double Polynomial::calculateDefiniteIntegral(double aXlow, double aXhigh) const
 {
 	Polynomial Definite;
 	
-	return ((((*this).computeIndefiniteIntegral().operator()(aXhigh)) - ((*this).computeIndefiniteIntegral().operator()(aXlow))));
-} // why *this worked
+	Polynomial Definite = computeIndefiniteIntegral();
+	
+	return Definite(aXhigh) - Definite(aXlow);
+}
